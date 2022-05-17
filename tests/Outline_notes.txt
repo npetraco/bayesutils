@@ -1,0 +1,45 @@
+Basic parametric course outline:
+
+1.
+Quick Bayes intro
+	emphasize distributions
+R/Rstudio input output
+Graphs
+	hist, BW, scatter with example data
+Packages
+	Stan install, rstan
+	JAGS, R2jags
+	Trouble shooting
+HW - run test scripts and make sure you get what I get
+
+2.
+Single parameter methods
+	Some theory 
+	practice coding in Stan and JAGS
+	Example problems/class coding
+	Basic diagnostic assessment and interpretation
+
+3.
+Multi parameter methods
+	practice coding in Stan and JAGS
+	Example problems/class coding (As lab?)
+	Basic diagnostic assessment and interpretation
+
+4. 
+MCMC, Gibbs and HMC 
+	HW??
+
+5.
+Linear Regression
+	(Simplest ARM/WinBUGS models)
+	Shinystan diagnostics
+	Plotting
+	Interpretation
+	Code these in Stan and JAGS
+
+6.
+Hierarchical Regression
+linear
+
+pines by bridge sampling
+wacky bayes factor with prior
