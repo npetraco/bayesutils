@@ -1,0 +1,23 @@
+Package: bayesutils
+Type: Package
+Title: A little convenience package for Bayes course(s)
+Version: 0.1.0
+Author: Nick Petraco and Peter Shenkin
+Maintainer: <npetraco@gmail.com>
+Description: Some handy convenience functions to help you out with homework problems in MAT/FOS Bayes courses. Covers use of rstan and associated packages, rjags and assiciated packages and gR associated packages.
+License: GPL-3
+Imports: rstan (>= 2.6.0),
+         coda (>= 0.1.0),
+         bayesplot (>= 1.0.0),
+         bridgesampling (>= 1.0.0),
+         gRbase (>= 1.8-1),
+         gRain (>= 1.3-0),
+         extraDistr (>= 1.0.0),
+         R2jags (>= 0.5-6),
+         babar (>= 1.0.0)
+Depends: R2jags (>= 0.5-6),
+         coda (>= 0.1.0),
+         rstan (>= 2.6.0)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.2

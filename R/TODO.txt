@@ -1,0 +1,3 @@
+set evidence function using asub in abind.
+
+Split functions into files and document!
