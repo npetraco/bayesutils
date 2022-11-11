@@ -1,4 +1,4 @@
-#library(extraDistr) # Handy for half-distributions
+library(extraDistr) # Handy for half-distributions
 
 UniformPrior = structure(function
 ### Generate samples from uniform distribution

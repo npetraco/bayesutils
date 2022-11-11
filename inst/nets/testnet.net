@@ -1,0 +1,43 @@
+net 
+{
+    node_size = (76 36);
+}
+
+node Node1
+{
+    label = "Node1";
+    position = (439 104);
+    states = ("State0"  "State1");
+}
+
+node Node3
+{
+    label = "Node3";
+    position = (280 103);
+    states = ("State0"  "State1");
+}
+
+node Node2
+{
+    label = "Node2";
+    position = (366 -15);
+    states = ("State0"  "State1");
+}
+
+potential (Node1 |)
+{
+    data = (0.50000000 0.50000000);
+}
+
+potential (Node3 |)
+{
+    data = (0.50000000 0.50000000);
+}
+
+potential (Node2 | Node1 Node3)
+{
+    data = (((0.50000000 0.50000000)
+        (0.50000000 0.50000000))
+        ((0.50000000 0.50000000)
+        (0.50000000 0.50000000)));
+}

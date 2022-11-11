@@ -16,6 +16,8 @@
 /Users/karen2/codes/R/bayesutils/inst/stan_models/exp_inv-gamma_target_format.stan="93113487"
 /Users/karen2/codes/R/bayesutils/tests/exp-invgamma_jags_test.R="CF7EA37E"
 /Users/karen2/codes/R/bayesutils/tests/exp-invgamma_test.R="DD040019"
+/Users/karen2/codes/R/bayesutils/tests/hmc_autodiff_test1.R="6E6DF331"
+/Users/karen2/codes/R/bayesutils/tests/radon_test.R="C4C269A2"
 /Users/karen2/latex/class/fos705/Applied_Bayes/Notes/online/15_single_parameter_model_examples/exp-inv-gamma.R="2C48978B"
 /Users/karen2/latex/class/fos705/Applied_Bayes/Notes/online/15_single_parameter_model_examples/exp_inv-gamma.stan="78C0549B"
 /Users/karen2/latex/class/fos705/Applied_Bayes/Notes/online/15_single_parameter_model_examples/exp_inv-gamma_target_format.stan="6F2B2388"

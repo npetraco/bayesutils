@@ -18,6 +18,8 @@
 ~%2Fcodes%2FR%2Fbayesutils%2Finst%2Fstan_models%2Fexp_inv-gamma_target_format.stan="0638C8DF"
 ~%2Fcodes%2FR%2Fbayesutils%2Ftests%2Fexp-invgamma_jags_test.R="ECB63EBF"
 ~%2Fcodes%2FR%2Fbayesutils%2Ftests%2Fexp-invgamma_test.R="546DCE5A"
+~%2Fcodes%2FR%2Fbayesutils%2Ftests%2Fhmc_autodiff_test1.R="E2E588ED"
+~%2Fcodes%2FR%2Fbayesutils%2Ftests%2Fradon_test.R="7D89EA3F"
 ~%2Flatex%2Fclass%2Ffos705%2FApplied_Bayes%2FNotes%2Fonline%2F14_mcmc_sampling_single_parameter_bayesian_inference%2Fbinomial_logitnormal.R="8F344F5F"
 ~%2Flatex%2Fclass%2Ffos705%2FApplied_Bayes%2FNotes%2Fonline%2F15_single_parameter_model_examples%2Fexp-inv-gamma.R="E73A1DFE"
 ~%2Flatex%2Fclass%2Ffos705%2FApplied_Bayes%2FNotes%2Fonline%2F15_single_parameter_model_examples%2Fexp_inv-gamma.stan="7DB1726F"
