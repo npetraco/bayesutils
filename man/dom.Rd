@@ -16,7 +16,7 @@ The domain of random variates over which the bale is constructed.
 Spit out domain of a CPT or POT.
 }
 \details{
-Spit out domain of a CPT or POT. Useful with gRain.
+Spit out domain of a CPT or POT:
 }
 \examples{
 XXXX
