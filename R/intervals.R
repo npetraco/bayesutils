@@ -12,10 +12,10 @@
 parameter.intervals <- function(param.sample, prob=0.95, plotQ=F, xlim=NULL, ylim=NULL) {
 
   # HPDIs:
-  if(class(param.sample) == "numeric"){
+  if(class(param.sample) == "numeric"){      # JAGS format
     hpd.int <- HPDinterval(as.mcmc(param.sample), c(prob))
     hpd.int <- c(hpd.int[1], hpd.int[2])
-  } else if(class(param.sample) == "array"){
+  } else if(class(param.sample) == "array"){ # Stan format
     hpd.int <- HPDinterval(as.mcmc(as.vector(param.sample)), c(prob))
     hpd.int <- c(hpd.int[1], hpd.int[2])
   } else {
