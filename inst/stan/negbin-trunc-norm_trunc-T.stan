@@ -19,6 +19,6 @@ model {
   lambda  ~ normal(mun,sigman);
   phi     ~ student_t(nu,mut,sigmat);
 
-  //likelihood (vectorized form)
+  //Likelihood (vectorized form)
   s ~ neg_binomial_2(lambda, phi);
 }
