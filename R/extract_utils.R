@@ -39,7 +39,8 @@ extract.params <- function(fit.obj, params.vec=NULL, by.chainQ=F, as.matrixQ=F) 
 
     # Do this in case no parameters were specified for an rjags fit.obj. Get all of them
     if(is.null(params.vec)) {
-      params.vec.loc <- fit.obj$parameters.to.save
+      #params.vec.loc <- fit.obj$parameters.to.save # Doesn't work for vector parameters
+      params.vec.loc <- colnames(fit.obj$BUGSoutput$sims.matrix) # Do this instead incase some parameters are vectors or matrices
       params.vec.loc <- params.vec.loc[-which(params.vec.loc == "deviance")]
     } else {
       params.vec.loc <- params.vec
@@ -67,15 +68,18 @@ extract.params <- function(fit.obj, params.vec=NULL, by.chainQ=F, as.matrixQ=F) 
 
       params.samples       <- rep(list(NULL), length(params.vec.loc))
       jags.param.names.vec <- colnames(fit.obj$BUGSoutput$sims.matrix)
+      #print(jags.param.names.vec)
       for(i in 1:length(params.vec.loc)){
         #print(paste0("Param #", i, " = ", params.vec.loc[i]))
         params.idx          <- which(jags.param.names.vec == params.vec.loc[i])
+        #print(params.idx)
         params.samples[[i]] <- fit.obj$BUGSoutput$sims.matrix[,params.idx]
       }
       names(params.samples) <- params.vec.loc
 
       if(as.matrixQ==T){
         pnms                     <- names(params.samples)
+        #print(pnms)
         params.samples           <- sapply(1:length(params.samples), function(xx){params.samples[[xx]]})
         colnames(params.samples) <- pnms
       }
