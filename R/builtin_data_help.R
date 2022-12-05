@@ -59,3 +59,29 @@
 #' @examples
 #' data(indkm.counts)
 "indkm.counts"
+
+
+#' Fake data for a black box firearms examiner error rate study
+#'
+#' Fake data for a black box firearms examiner error rate study. Data based on Baldwin 2014 study.
+#' There were 218 examiners in the study, each of whom examined 9 or 10 sets of non match (NM)
+#' cartridge cases and 5 sets of matching (M) cartridge cases. Baldwin does not break down the data
+#' examiner by examiner however, so we base this fake data on several assumptions. First, Baldwin
+#' does not say which examiners made how many errors, so we guess. Second, Baldwin does not say
+#' which examines called how many inconclusives, so we guess those too. We use clues in his text
+#' to guess as best we can. The summary statistics, error rates and interval estimates of this
+#' fake data are consistent with the results of Baldwin.
+#'
+#' @docType data
+#'
+#' @usage data(fbbf)
+#'
+#' @keywords datasets
+#'
+#' @references DP Baldwin, SJ Bajic, M Morris, D Zamzow. A Study of False-Positive and
+#' False-Negative Error Rates in Cartridge Case Comparisons. Ames Laboratory, USDOE,
+#' Technical Report # IS-5207; https://www.ojp.gov/pdffiles1/nij/249874.pdf
+#'
+#' @examples
+#' data(fbbf)
+"fbbf"

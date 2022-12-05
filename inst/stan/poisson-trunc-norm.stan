@@ -11,7 +11,7 @@ model {
   //Prior
   lambda ~ normal(mun, sigman);
 
-  //likelihood (vectorized)
+  //Likelihood (vectorized)
   s ~ poisson(lambda);
 
 }

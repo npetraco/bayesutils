@@ -9,7 +9,7 @@
 #'
 #'
 #' @export
-extract.params <- function(fit.obj, params.vec=NULL, by.chainQ=F, as.matrixQ=F) {
+extract.params <- function(fit.obj, params.vec=NULL, by.chainQ=F, as.data.frameQ=F) {
 
   if(class(fit.obj) == "stanfit"){                                             # Stan
 
@@ -27,10 +27,12 @@ extract.params <- function(fit.obj, params.vec=NULL, by.chainQ=F, as.matrixQ=F) 
       }
       params.samples <- extract(fit, params.vec.loc)
 
-      if(as.matrixQ==T){
+      if(as.data.frameQ==T){
         pnms                     <- names(params.samples)
         params.samples           <- sapply(1:length(params.samples), function(xx){params.samples[[xx]]})
         colnames(params.samples) <- pnms
+        params.samples           <- data.frame(params.samples) # Note if [] are in the names, which happens with vector and matrix parameters, the [] are changes to ..
+        #print(colnames(params.samples))
       }
 
     }
@@ -77,11 +79,12 @@ extract.params <- function(fit.obj, params.vec=NULL, by.chainQ=F, as.matrixQ=F) 
       }
       names(params.samples) <- params.vec.loc
 
-      if(as.matrixQ==T){
+      if(as.data.frameQ==T){
         pnms                     <- names(params.samples)
         #print(pnms)
         params.samples           <- sapply(1:length(params.samples), function(xx){params.samples[[xx]]})
         colnames(params.samples) <- pnms
+        params.samples           <- data.frame(params.samples)
       }
 
     }

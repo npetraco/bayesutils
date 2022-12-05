@@ -28,8 +28,30 @@ save(cms.knm, file="data/cms.knm.RData")
 cms.km
 data("cms.km")
 
-
+# Some fake fingerprints minutia counts used to call a match
 indkm.counts <- read.csv("data/indkm.counts.csv", header=F)
 indkm.counts <- as.matrix(indkm.counts)
 save(indkm.counts, file="data/indkm.counts.RData")
 
+
+
+# Fake Baldwin data
+"total.poss.fp" # Total number of KNM comparisons for examiner i = total number of possible false positives
+"num.incl.ds"   # For KNM comparisons -> number called inconclusive by examiner i
+"num.fp"        # For KNM comparisons -> number of false positive identifications
+"total.poss.fn" # Total number of KM comparisons for examiner i = total number of possible false negatives
+"num.incl.ss"   # For KM comparisons -> number called inconclusive by examiner i
+"num.fn"        # For KM comparisons -> number of false negative identifications
+
+fbbfs <- read.csv("data/fake.blackbox.firearms.study.csv")
+
+# Mix up rows to make look a little more realistic
+ridxs  <- sample(1:nrow(fbbfs), size = nrow(fbbfs), replace = F)
+fbbfs2 <- as.matrix(fbbfs[ridxs,])
+rownames(fbbfs2) <- NULL
+fbbfs2
+examiner.ID <- 1:nrow(fbbfs2)
+fbbf <- cbind(examiner.ID, fbbfs2)
+colnames(fbbf) <- c("examiner.ID", "num.NM.comparisons", "num.NM.inconclusive", "num.false.positive", "num.M.comparisons", "num.M.inconclusive", "num.false.negative")
+
+save(fbbf, file="data/fbbf.RData")
