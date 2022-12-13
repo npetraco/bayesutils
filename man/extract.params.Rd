@@ -4,7 +4,13 @@
 \alias{extract.params}
 \title{XXXXX}
 \usage{
-extract.params(fit.obj, params.vec = NULL, by.chainQ = F, as.data.frameQ = F)
+extract.params(
+  fit.obj,
+  params.vec = NULL,
+  by.chainQ = F,
+  as.data.frameQ = F,
+  as.matrixQ = F
+)
 }
 \arguments{
 \item{XX}{The XX}

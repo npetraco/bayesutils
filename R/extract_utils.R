@@ -9,7 +9,7 @@
 #'
 #'
 #' @export
-extract.params <- function(fit.obj, params.vec=NULL, by.chainQ=F, as.data.frameQ=F) {
+extract.params <- function(fit.obj, params.vec=NULL, by.chainQ=F, as.data.frameQ=F, as.matrixQ=F) {
 
   if(class(fit.obj) == "stanfit"){                                             # Stan
 
@@ -27,7 +27,7 @@ extract.params <- function(fit.obj, params.vec=NULL, by.chainQ=F, as.data.frameQ
       }
       params.samples <- extract(fit, params.vec.loc)
 
-      if(as.data.frameQ==T){
+      if((as.data.frameQ==T) | (as.matrixQ==T)){
         pnms                     <- names(params.samples)
         params.samples           <- sapply(1:length(params.samples), function(xx){params.samples[[xx]]})
         colnames(params.samples) <- pnms
@@ -79,7 +79,7 @@ extract.params <- function(fit.obj, params.vec=NULL, by.chainQ=F, as.data.frameQ
       }
       names(params.samples) <- params.vec.loc
 
-      if(as.data.frameQ==T){
+      if((as.data.frameQ==T) | (as.matrixQ==T)){
         pnms                     <- names(params.samples)
         #print(pnms)
         params.samples           <- sapply(1:length(params.samples), function(xx){params.samples[[xx]]})
