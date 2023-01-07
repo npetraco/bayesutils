@@ -1,7 +1,7 @@
 model {
 
   # Priors
-  taut   <- 1.0/sigmat
+  taut   <- 1.0/sigmat^2
   ppi    ~ dbeta(alpha, beta)
   phi    ~ dt(mut, taut, nu)T(0.0,)
 

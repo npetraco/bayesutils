@@ -1,6 +1,14 @@
-#---------------------------------------------------
-# log(a+b) = log(exp(a) + exp(b)) for nested sampling plots
-#---------------------------------------------------
+#' Log-sum-exp trick
+#'
+#' Log-sum-exp trick
+#'
+#' log(a+b) = log(exp(a) + exp(b))
+#'
+#' @param XX The XX
+#' @return The function will XX
+#'
+#'
+#' @export
 logsumexp <- function(aa, bb) {
   # Sum a and b via their logarithms, such that if:
   # a = log(x) and b = log(y)
@@ -13,9 +21,18 @@ logsumexp <- function(aa, bb) {
   return(ssum)
 }
 
-#---------------------------------------------------
-# for a > b log(a-b) = log(exp(a) - exp(b))
-#---------------------------------------------------
+
+#' Log-difference-exp trick
+#'
+#' Log-difference-exp trick
+#'
+#' For a > b log(a-b) = log(exp(a) - exp(b))
+#'
+#' @param XX The XX
+#' @return The function will XX
+#'
+#'
+#' @export
 logdiffexp <- function(aa, bb) {
 
   if(aa > bb) {
@@ -32,6 +49,39 @@ logdiffexp <- function(aa, bb) {
   }
   return(ddif)
 }
+
+
+#' Standardize a data vector
+#'
+#' Standardize with mean centering and sd scaling or median centering and MAD scaling
+#'
+#' XXXX
+#'
+#' @param XX The XX
+#' @return The function will XX
+#'
+#'
+#' @export
+standardize <- function(dvec, type="regular") {
+
+  if(type=="regular") {
+    centr    <- mean(dvec)
+    scl      <- sd(dvec)
+    std.dvec <- (dvec - centr)/scl
+  } else if(type=="mad") {
+    centr    <- median(dvec)
+    scl      <- mad(dvec)
+    std.dvec <- (dvec - centr)/scl
+  } else {
+    stop("Choose regular or mad for type!")
+  }
+
+  std.dvec.info <- list(std.dvec, centr, scl)
+  names(std.dvec.info) <- c("datvec", "center", "scale")
+
+  return(std.dvec.info)
+}
+
 
 #--------------------------------------------
 #Remove the tabs put into a .net file saved from SamIam

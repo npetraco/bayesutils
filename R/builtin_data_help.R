@@ -85,3 +85,77 @@
 #' @examples
 #' data(fbbf)
 "fbbf"
+
+
+#' Logistic regression coefficients from Tvedebrink 2012
+#'
+#' Logistic regression coefficients for dropout rate study by from Tvedebrink et al 2012. Log-odds
+#' of dropout at each locus are computed as: (b0-locus + g0-#cyc) + (b1-locus + g1-#cyc)*logH. The
+#' intercepts, b0-locus, differ for each locus however the slopes, b1-locus, are the same. These both
+#' also corredpond to 28-PCR thermocycles. To obtain log-odds for 29 and 30-PCR thermocycles, add in
+#' intercept (g0-#cyc) and slope (g1-#cyc) corrections to the 28-cycle coefficients. Log(H) is
+#' related to log of the peak height(s) of the alleals at the locus (which in turn is related to the
+#' amount of DNA in the sample). See paper for more detail.
+#'
+#' @docType data
+#'
+#' @usage data(tvedebrink12)
+#'
+#' @keywords datasets
+#'
+#' @references T Tvedebrink, PS Eriksen, M Asplund, HS Mogensen, N Morling. Allelic drop-out
+#' probabilities estimated by logistic regression—Further considerations and practical implementation.
+#' Forensic Science International: Genetics 6 (2012) 263–267.
+#'
+#' @examples
+#' data(tvedebrink12)
+"tvedebrink12"
+
+
+#' Fake allelic dropout data generated from Tvedebrink 2012, 28-cycle logistic regression coefficients.
+#'
+#' Fake allelic dropout data generated from Tvedebrink 2012, 28-cycle logistic regression coefficients.
+#' Data is a list of matrices for loci: "D3", "vWA", "D16", "D2", "D8", "SE33", "D19", "TH0", "FGA",
+#' "D21" and "D18". Columns of the matrices are H (related to alleal peak height(s) at each locus),
+#' log(H) and a dropout indicator (D.vec). In the D.vec column, 1 = peak dropped out, 0 = peak present.
+#' D.vec data is fake and simulated using Tvedebrink 2012 b0 and b1 coefficients. Simulation model:
+#' b0 ~ normal(b0-2012, b0se-2012), b1 ~ normal(b1-2012, b1se-2012), log-Odds = b0 + b1*logH,
+#' pD = p(dropout) = inv-logit(pD) and D.vec[i] = D.vec(H) ~ bernoulli(pD(H)). Logistic regression
+#' coefficients used in the model are contained in tvedebrink12.
+#'
+#' @docType data
+#'
+#' @usage data(dropout.info)
+#'
+#' @keywords datasets
+#'
+#' @references T Tvedebrink, PS Eriksen, M Asplund, HS Mogensen, N Morling. Allelic drop-out
+#' probabilities estimated by logistic regression—Further considerations and practical implementation.
+#' Forensic Science International: Genetics 6 (2012) 263–267.
+#'
+#' @examples
+#' data(dropout.info)
+"dropout.info"
+
+
+#' Gelman et al. Stop and frisk data with noise added to protect confidentiality
+#'
+#' Gelman et al. Stop and frisk data with noise added to protect confidentiality. Precincts are
+#' numbered 1-75, ethnicity 1=black, 2=hispanic, 3=white, crime type 1=violent, 2=weapons, 3=property,
+#' 4=drug.
+#'
+#' @docType data
+#'
+#' @usage data(frisk)
+#'
+#' @keywords datasets
+#'
+#' @references A Gelman, J Fagan, A Kiss. An Analysis of the New York City Police Department’s
+#' "Stop-and-Frisk" Policy in the Context of Claims of Racial Bias. Journal of the American Statistical
+#'  Association, Vol. 102, No. 479, Pp. 813-823, 2007.
+#'
+#' http://www.stat.columbia.edu/~gelman/arm/examples/police/frisk_with_noise.dat
+#'
+#' @examples
+#' data(frisk)
+"frisk"
