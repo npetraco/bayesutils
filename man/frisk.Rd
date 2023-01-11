@@ -3,7 +3,7 @@
 \docType{data}
 \name{frisk}
 \alias{frisk}
-\title{Gelman et al. Stop and frisk data with noise added to protect confidentiality}
+\title{Gelman et al. stop and frisk data with noise added to protect confidentiality}
 \format{
 An object of class \code{data.frame} with 900 rows and 6 columns.
 }
@@ -11,7 +11,7 @@ An object of class \code{data.frame} with 900 rows and 6 columns.
 data(frisk)
 }
 \description{
-Gelman et al. Stop and frisk data with noise added to protect confidentiality. Precincts are
+Gelman et al. stop and frisk data with noise added to protect confidentiality. Precincts are
 numbered 1-75, ethnicity 1=black, 2=hispanic, 3=white, crime type 1=violent, 2=weapons, 3=property,
 4=drug.
 }

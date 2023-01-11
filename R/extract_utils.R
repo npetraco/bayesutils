@@ -96,3 +96,51 @@ extract.params <- function(fit.obj, params.vec=NULL, by.chainQ=F, as.data.frameQ
   return(params.samples)
 
 }
+
+
+#' Function to extract log likelihoods form Stan or JAGS fit object
+#'
+#' Function to extract log likelihoods form Stan or JAGS fit object. Mirror functionality
+#' of extract_log_lik in the loo package. Returns object suitable for use with loo package.
+#'
+#' The function is XXXXXXX
+#'
+#' @param XX The XX
+#' @return The function will XX
+#'
+#'
+#' @export
+extract.log.lik <- function(fit.obj, parameter_name = "log_lik", merge_chains = F) {
+
+  if(class(fit.obj) == "stanfit"){                                             # Stan
+
+    log.lik.loc <- extract_log_lik(fit.obj, parameter_name = parameter_name, merge_chains = merge_chains)
+
+  } else if(class(fit.obj) == "rjags") {
+
+    if(merge_chains == F){
+      param.names <- dimnames(fit.obj$BUGSoutput$sims.array)[[3]]
+      log.lik.idxs <- which(grepl(parameter_name, param.names, fixed = TRUE) == T)
+      if(length(log.lik.idxs) == 0) {
+        stop(paste0("There is no parameter named: ",  parameter_name))
+      } else {
+        log.lik.loc <- fitj$BUGSoutput$sims.array[,,log.lik.idxs]
+      }
+
+    } else {
+      param.names <- colnames(fit.obj$BUGSoutput$sims.matrix)
+      log.lik.idxs <- which(grepl(parameter_name, param.names, fixed = TRUE) == T)
+      if(length(log.lik.idxs) == 0) {
+        stop(paste0("There is no parameter named: ",  parameter_name))
+      } else {
+        log.lik.loc <- fitj$BUGSoutput$sims.matrix[,log.lik.idxs]
+      }
+    }
+
+  } else {
+    stop("fit.obj should be of class stanfit or rjags")
+  }
+
+  return(log.lik.loc)
+
+}
