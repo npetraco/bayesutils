@@ -9,7 +9,8 @@ model{
 
   # Likelihood and Log-likelihood
   for(i in 1:n) {
-    y[i] ~ dnorm(alpha + inprod(beta, X[i,]), 1/sigma^2);
+    y[i] ~ dnorm(alpha + inprod(beta, X[i,]), 1/sigma^2)
+    log_lik[i] <- log( dnorm(y[i], alpha + inprod(beta, X[i,]), 1/sigma^2) )
   }
 
 }

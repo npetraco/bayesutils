@@ -25,7 +25,7 @@ extract.params <- function(fit.obj, params.vec=NULL, by.chainQ=F, as.data.frameQ
       } else {
         params.vec.loc <- params.vec
       }
-      params.samples <- extract(fit, params.vec.loc)
+      params.samples <- extract(fit.obj, params.vec.loc)
 
       if((as.data.frameQ==T) | (as.matrixQ==T)){
         pnms                     <- names(params.samples)
@@ -124,7 +124,7 @@ extract.log.lik <- function(fit.obj, parameter_name = "log_lik", merge_chains = 
       if(length(log.lik.idxs) == 0) {
         stop(paste0("There is no parameter named: ",  parameter_name))
       } else {
-        log.lik.loc <- fitj$BUGSoutput$sims.array[,,log.lik.idxs]
+        log.lik.loc <- fit.obj$BUGSoutput$sims.array[,,log.lik.idxs]
       }
 
     } else {
@@ -133,7 +133,7 @@ extract.log.lik <- function(fit.obj, parameter_name = "log_lik", merge_chains = 
       if(length(log.lik.idxs) == 0) {
         stop(paste0("There is no parameter named: ",  parameter_name))
       } else {
-        log.lik.loc <- fitj$BUGSoutput$sims.matrix[,log.lik.idxs]
+        log.lik.loc <- fit.obj$BUGSoutput$sims.matrix[,log.lik.idxs]
       }
     }
 
