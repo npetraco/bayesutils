@@ -1,7 +1,7 @@
-#' XXXX
+#' Write a JAGS or Stan model to file
 #'
-#' XXX
-#' The function is XXXXXXX
+#' Write a JAGS or Stan model to a temp file. Model should be formatted as a string. Intended for
+#' use with JAGS since rstan can already deal with model strings but JAGS needs a stand alone file.
 #'
 #' @param XX XX
 #' @return The function will XX

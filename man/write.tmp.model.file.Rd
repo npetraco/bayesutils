@@ -2,7 +2,7 @@
 % Please edit documentation in R/model.string_utils.R
 \name{write.tmp.model.file}
 \alias{write.tmp.model.file}
-\title{XXXX}
+\title{Write a JAGS or Stan model to file}
 \usage{
 write.tmp.model.file(model.string)
 }
@@ -13,6 +13,6 @@ write.tmp.model.file(model.string)
 The function will XX
 }
 \description{
-XXX
-The function is XXXXXXX
+Write a JAGS or Stan model to a temp file. Model should be formatted as a string. Intended for
+use with JAGS since rstan can already deal with model strings but JAGS needs a stand alone file.
 }
