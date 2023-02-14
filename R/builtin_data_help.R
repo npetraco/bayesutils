@@ -159,3 +159,23 @@
 #' @examples
 #' data(frisk)
 "frisk"
+
+
+#' Fake average daily active users per week over the course of a year
+#'
+#' Fake (simulated) average daily active users per week over the course of a year on a fake
+#' social media site. Each row of the data is a month. Each column represents one of the four
+#' weeks in a month. Simulation based on insights found here: https://financesonline.com/number-of-twitter-users/
+#'
+#' @docType data
+#'
+#' @usage data(aduf)
+#'
+#' @keywords datasets
+#'
+#' @references https://financesonline.com/number-of-twitter-users/
+#'
+#'
+#' @examples
+#' data(aduf)
+"aduf"

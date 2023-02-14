@@ -5,12 +5,12 @@ data {
   real<lower=0> b;
 }
 parameters {
-  real<lower=0,upper=1> ppi;
+  real<lower=0,upper=1> p_heads; // In here we just changed ppi to p_heads
 }
 model {
   // proir on p_heads:
-  ppi ~ beta(a, b);
+  p_heads ~ beta(a, b);
 
   // likelihood:
-  s ~ binomial(n, ppi);
+  s ~ binomial(n, p_heads);
 }

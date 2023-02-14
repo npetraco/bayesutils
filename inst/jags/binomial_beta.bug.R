@@ -1,9 +1,9 @@
 model{
 
   # Likelihood
-  s ~ dbin(p_heads, n)
+  s ~ dbin(ppi, n)
 
   # Prior:
-  p_heads ~ dbeta(a,b)
+  ppi ~ dbeta(a,b)
 
 }
