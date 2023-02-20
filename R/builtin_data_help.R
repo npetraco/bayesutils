@@ -179,3 +179,46 @@
 #' @examples
 #' data(aduf)
 "aduf"
+
+
+#' Fake DNA shedder data
+#'
+#' Fake (simulated) shed amounts of touch DNA. Simulation based on MS thesis work of Xiao Chen.
+#' (Fake) Shed amounts of touch DNA are for 50 (fake) participants with three replicate assays each
+#' from seven locations on the body. A "W" suffix indicates washed, a "U" suffix indicates unwashed.
+#'
+#' @docType data
+#'
+#' @usage data(shedder)
+#'
+#' @keywords datasets
+#'
+#' @references GET Xiao's thesis ref
+#'
+#'
+#' @examples
+#' data(shedder)
+"shedder"
+
+
+
+#' Fake financial fraud transaction data
+#'
+#' A simple faked financial transaction data set consisting of simulated suspicion scores for a group
+#' of 60 transactions. 30 transactions were "ruled" not to be involved in fraud and 30 transactions
+#' were "ruled" to be involved in fraud.
+#'
+#' @docType data
+#'
+#' @usage data(transactions)
+#'
+#' @keywords datasets
+#'
+#' @references  RJ Bolton, DJ Hand. "Statistical Fraud Detection: A review", Statist. Sci. 17(3): 235-255 (2002)
+#'
+#' https://projecteuclid.org/journalArticle/Download?urlId=10.1214%2Fss%2F1042727940
+#'
+#'
+#' @examples
+#' data(transactions)
+"transactions"

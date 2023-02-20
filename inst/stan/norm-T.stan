@@ -19,5 +19,3 @@ generated quantities {
   //posterior predictive distribution
   real ypred = normal_rng(mu,sigma);
 }
-
-
