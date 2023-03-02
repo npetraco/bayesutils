@@ -3,6 +3,7 @@
 export(autocorrelation.plots)
 export(extract.log.lik)
 export(extract.params)
+export(get.bin.freqs)
 export(logdiffexp)
 export(logsumexp)
 export(lpf.poisson.gamma)

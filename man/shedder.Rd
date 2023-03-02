@@ -19,6 +19,8 @@ from seven locations on the body. A "W" suffix indicates washed, a "U" suffix in
 data(shedder)
 }
 \references{
-GET Xiao's thesis ref
+X. Chen "Evaluating a Test for Shedding Propensity Using Tape Lifts from Different Skin Locations", Dec-27-2021.
+
+https://academicworks.cuny.edu/jj_etds/199/
 }
 \keyword{datasets}

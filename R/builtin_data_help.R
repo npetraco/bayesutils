@@ -193,7 +193,9 @@
 #'
 #' @keywords datasets
 #'
-#' @references GET Xiao's thesis ref
+#' @references X. Chen "Evaluating a Test for Shedding Propensity Using Tape Lifts from Different Skin Locations", Dec-27-2021.
+#'
+#' https://academicworks.cuny.edu/jj_etds/199/
 #'
 #'
 #' @examples
