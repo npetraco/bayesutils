@@ -224,3 +224,21 @@
 #' @examples
 #' data(transactions)
 "transactions"
+
+
+#' Unclean MCMC chain
+#'
+#' An uncleaned up MCMC chain. Useful for exploring computation of convergence diagnostics and cleanup
+#' methodologies.
+#'
+#' @docType data
+#'
+#' @usage data(clean.me.up.chain)
+#'
+#' @keywords datasets
+#'
+#'
+#'
+#' @examples
+#' data(clean.me.up.chain)
+"clean.me.up.chain"
