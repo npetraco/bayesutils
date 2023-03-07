@@ -60,7 +60,7 @@ acf(samp)
 hist(samp)
 
 burn.in <- 500
-thin    <- 10
+thin    <- 15
 
 # Toss first chunk of sample for out of equilibrium:
 samp2   <- samp[(burn.in+1) : length(samp)]
@@ -93,3 +93,6 @@ ess_tail(as.matrix(clean.me.up.chain))
 Rhat(ac)
 ess_bulk(ac)
 ess_tail(ac)
+
+dat <- read.csv("https://raw.githubusercontent.com/npetraco/bayesutils/master/data/clean.me.up.chain.csv", header=T)
+
