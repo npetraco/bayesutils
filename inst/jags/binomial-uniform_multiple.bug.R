@@ -10,5 +10,5 @@ model{
   }
 
   # Get the overall ppi
-  mean.ppi <- mean(ppi[])
+  mean_ppi <- mean(ppi[])
 }

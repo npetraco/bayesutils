@@ -8,6 +8,9 @@ parameter.intervals(
   param.sample,
   prob = 0.95,
   plotQ = F,
+  main = "Histogram of param.samp",
+  xlab = "param.samp",
+  ylab,
   xlim = NULL,
   ylim = NULL
 )

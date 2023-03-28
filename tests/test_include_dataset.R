@@ -55,3 +55,13 @@ fbbf <- cbind(examiner.ID, fbbfs2)
 colnames(fbbf) <- c("examiner.ID", "num.NM.comparisons", "num.NM.inconclusive", "num.false.positive", "num.M.comparisons", "num.M.inconclusive", "num.false.negative")
 
 save(fbbf, file="data/fbbf.RData")
+
+
+
+# a little bit of NBA player data:
+nba <- read.csv("data/nba.csv", header = T)
+
+save(nba, file="data/nba.RData")
+
+library(bayesutils)
+data("nba")

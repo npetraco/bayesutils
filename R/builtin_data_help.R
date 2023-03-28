@@ -242,3 +242,62 @@
 #' @examples
 #' data(clean.me.up.chain)
 "clean.me.up.chain"
+
+
+#' Wine quality/chemical data
+#'
+#' Data for red and white variants of the Portuguese "Vinho Verde" wine and associated quality judgement scores.
+#'
+#' @docType data
+#'
+#' @usage data(wine)
+#'
+#' @keywords datasets
+#'
+#' @references P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis. Modeling wine preferences by data mining from physicochemical properties. In Decision Support Systems, Elsevier, 47(4):547-553, 2009.
+#'
+#' @examples
+#' data(wine)
+"wine"
+
+
+#' Wine cultivar data
+#'
+#' These data are the results of a chemical analysis of wines grown in the same region in Italy but derived from three different cultivars. The analysis determined the quantities of 13 constituents found in each of the three types of wines.
+#' This is an old dataset and not sure of the original reference. See the link to the UCI database below.
+#'
+#' @docType data
+#'
+#' @usage data(wine2)
+#'
+#' @keywords datasets
+#'
+#' @references 1. cf. https://archive.ics.uci.edu/ml/datasets/Wine
+#' @references 2. Forina, M. et al, PARVUS -An Extendible Package for Data Exploration, Classification and Correlation. Institute of Pharmaceutical and Food Analysis and Technologies, Via Brigata Salerno, 16147 Genoa, Italy.
+#' @references 3. UCI Donor: Stefan Aeberhard, email: stefan-at-coral.cs.jcu.edu.au
+#'
+#' @examples
+#' data(wine2)
+"wine2"
+
+
+#' NBA player data
+#'
+#' Data for some anonymous NBA players.
+#' ht = height,
+#' wt = weight,
+#' fg.perc = field goal percentage,
+#' ft.perc = free throw percentage,
+#' avg.ppg = average points per game
+#'
+#' @docType data
+#'
+#' @usage data(nba)
+#'
+#' @keywords datasets
+#'
+#' @references The official NBA basketball Encyclopedia, Villard Books, 1989.
+#'
+#' @examples
+#' data(nba)
+"nba"

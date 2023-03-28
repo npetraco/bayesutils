@@ -9,7 +9,7 @@
 #'
 #'
 #' @export
-parameter.intervals <- function(param.sample, prob=0.95, plotQ=F, xlim=NULL, ylim=NULL) {
+parameter.intervals <- function(param.sample, prob=0.95, plotQ=F, main="Histogram of param.samp", xlab="param.samp", ylab, xlim=NULL, ylim=NULL) {
 
   # HPDIs:
   if(class(param.sample) == "numeric"){      # JAGS format
@@ -35,7 +35,12 @@ parameter.intervals <- function(param.sample, prob=0.95, plotQ=F, xlim=NULL, yli
   rownames(interval.mat) <- c(paste0("HPDI.",as.character(100*prob), "%"), paste0("PI.",as.character(100*prob), "%"))
 
   if(plotQ==T){
-    hist(param.sample, bre=80, probability = T)
+    if(is.null(xlim)) {
+      xlim.loc <- range(param.sample)
+    } else {
+      xlim.loc <- xlim
+    }
+    hist(param.sample, bre=80, probability = T, main=main, xlab=xlab, ylab=ylab, xlim=xlim.loc, ylim=ylim)
     points(hpd.int, c(0,0), col="blue", pch=16)
     points(p.int, c(0,0), col="red", pch=17)
     print(paste0(as.character(100*prob), "%"," HDPI = blue points"))

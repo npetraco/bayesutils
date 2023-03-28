@@ -6,8 +6,7 @@ data {
   real          b_hyp;
 }
 parameters {
-  real<lower=0,upper=1> ppi[N]; // individual ppis
-  //real<lower=0,upper=1> ppi;  // mean ppi
+  real<lower=0,upper=1> ppi[N];
 }
 model {
   //Prior
@@ -17,7 +16,8 @@ model {
   s ~ binomial(n, ppi);
 }
 generated quantities {
-  //Get the overall ppi
-  real mean_ppi = mean(ppi);
-}
+  real mean_ppi;
 
+  mean_ppi = mean(ppi);
+
+}
