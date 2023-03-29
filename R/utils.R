@@ -55,6 +55,22 @@ logdiffexp <- function(aa, bb) {
 #'
 #' Standardize with mean centering and sd scaling or median centering and MAD scaling
 #'
+#' Easily update the bayesutils library by installing the current version from the github site
+#'
+#' Easily update the bayesutils library by installing the current version from the github site
+#'
+#' @param XX The XX
+#' @return The function will XX
+#'
+#'
+#' @export
+update.bayesutils <- function() {
+  print("Updating bayesutils")
+  devtools::install_github("npetraco/bayesutils")
+  print("Done!")
+}
+
+
 #' XXXX
 #'
 #' @param XX The XX

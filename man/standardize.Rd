@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{standardize}
 \alias{standardize}
-\title{Standardize a data vector}
+\title{XXXX}
 \usage{
 standardize(dvec, type = "regular")
 }
@@ -13,8 +13,5 @@ standardize(dvec, type = "regular")
 The function will XX
 }
 \description{
-Standardize with mean centering and sd scaling or median centering and MAD scaling
-}
-\details{
 XXXX
 }
