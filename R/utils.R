@@ -64,7 +64,7 @@ logdiffexp <- function(aa, bb) {
 #'
 #'
 #' @export
-update.bayesutils <- function() {
+update_bayesutils <- function() {
   print("Updating bayesutils")
   devtools::install_github("npetraco/bayesutils")
   print("Done!")
