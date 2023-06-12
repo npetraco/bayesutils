@@ -144,6 +144,9 @@ read.mf         <- read.model.file
 read_mf         <- read.model.file
 #' @export
 read_model_file <- read.model.file
+#' @export
+get_model_file <- read.model.file
+
 
 
 #' Download and load a script file

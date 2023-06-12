@@ -12,6 +12,8 @@ cms.km
 save(cms.km, file="data/cms.km.RData")
 
 
+
+
 raw2 <- read.csv("/Users/karen2/latex/class/fos705/Applied_Bayes/Prototype_course/Notes_prototype_course/16_multi-parametric_models/scripts/KNM_CMS.csv")
 raw2
 
@@ -65,3 +67,14 @@ save(nba, file="data/nba.RData")
 
 library(bayesutils)
 data("nba")
+
+
+# Radon data from Gelman and Hill, taken directly from rstanarm
+library(rstanarm)
+radon
+?radon
+#write.csv(radon, file = "data/radon.csv", row.names = F)
+
+save(radon, file="data/radon.RData")
+
+

@@ -202,6 +202,132 @@
 #' data(shedder)
 "shedder"
 
+#' Utility to help simplify (fake) shedder data
+#'
+#' Utility to help simplify (fake) shedder data
+#'
+#' The complete "shedder" data is complicated. Analyzing it all at once is not easy. The function is
+#' to help slice out relevant parts of the  "shedder" data for visualization and analysis purposes.
+#'
+#' @param XX The XX
+#' @return The function will XX
+#'
+#'
+#' @export
+shedder.extract.data <- function(shedder.data, location.variable, response.variable="amount.DNA", response.statistic, orderQ=F) {
+
+  # Slice out location data
+  ddat <- shedder.data %>% filter(location==location.variable)
+  ddat <- ddat %>% gather(rep.num, !!sym(response.variable), DNA.amt1:DNA.amt3)
+
+  # Responses stored as just DNA amounts. Transform response here if requested
+  if(response.variable == "amount.DNA.cen"){
+    ddat[,4] <- ddat[,4] - mean(ddat[,4])
+  } else if(response.variable == "amount.DNA.std"){
+    ddat[,4] <- (ddat[,4] - mean(ddat[,4]))/sd(ddat[,4])
+  } else if(response.variable == "log.amount.DNA") {
+    ddat[,4] <- log(ddat[,4])
+  } else if(response.variable == "log.amount.DNA.cen"){
+    ddat[,4] <- log(ddat[,4]) - mean(log(ddat[,4]))
+  } else if(response.variable == "log.amount.DNA.std"){
+    ddat[,4] <- (log(ddat[,4]) - mean(log(ddat[,4])))/sd(log(ddat[,4]))
+  }
+
+  # Put on replicate numbers:
+  ddat[,3] <- as.numeric(sapply(1:nrow(ddat), function(xx){strsplit(ddat[xx,3], split = "t")[[1]][2]}))
+  ddat <- ddat %>% arrange(subjectID)
+
+  # Tack on column of response statistics as a function of subjectID:
+  ddat <- ddat %>% group_by(subjectID) %>% mutate(ordering_statistic=response.statistic(!!sym(response.variable)))
+
+  # Order by subjectID response statistics values if requested:
+  if(orderQ==T) {
+    ddat <- arrange(ddat, ordering_statistic)
+  }
+
+  ddat <- ddat %>% ungroup() %>% mutate(ord_num = dense_rank(ddat$ordering_statistic) )
+
+  return(ddat)
+}
+
+#' Utility to help summarize simplified (fake) shedder data
+#'
+#' Utility to help summarize simplified (fake) shedder data
+#'
+#' The complete "shedder" data is complicated. Analyzing it all at once is not easy. The function is
+#' to help slice out relevant parts of the "shedder" data and summarize it for visualization and analysis purposes.
+#'
+#' @param XX The XX
+#' @return The function will XX
+#'
+#'
+#' @export
+shedder.summary.extract.data <- function(shedder.extracted.data, response.variable, order.statistic=mean, orderQ=T) {
+
+  dat.sumry <- shedder.extracted.data %>% group_by(subjectID) %>%
+    summarise(
+      location           = unique(location),
+      samp.size          = length(subjectID),
+      ordering_statistic = order.statistic(!!sym(response.variable)),
+      means              = mean(!!sym(response.variable)),
+      ses                = mean(!!sym(response.variable))/sqrt(length(subjectID)) )
+
+  if(orderQ==T) {
+    dat.sumry <- arrange( dat.sumry, ordering_statistic)
+  }
+  dat.sumry <- dat.sumry %>% ungroup() %>% mutate(ord_num = dense_rank(dat.sumry$ordering_statistic))
+
+  return(dat.sumry)
+
+}
+
+#' Utility to help plot simplified (fake) shedder donor data
+#'
+#' Utility to help plot simplified (fake) shedder donor data
+#'
+#' The complete "shedder" data is complicated. Analyzing it all at once is not easy. The function is
+#' to plot the "shedder" data as a function of the donors for visualization purposes.
+#'
+#' @param XX The XX
+#' @return The function will XX
+#'
+#'
+#' @examples
+#' AN EXAMPLE HERE
+#'
+#' @export
+shedder.donor.boxplot <- function(shedder.data, location.variable, response.variable, response.statistic, orderQ=T) {
+
+  dat.plot <- shedder.extract.data(
+    shedder.data       = shedder.data,
+    location.variable  = location.variable,
+    response.variable  = response.variable,
+    response.statistic = response.statistic,
+    orderQ             = orderQ)
+
+  if(orderQ==T) {
+    dat.s.plot <- shedder.summary.extract.data(
+      shedder.extracted.data = dat.plot,
+      response.variable      = response.variable,
+      orderQ                 = T,
+      order.statistic        = response.statistic)
+
+    boxplot(dat.plot$log.amount.DNA ~ factor(dat.plot$ord_num), xaxt="n", main="", ylab="", xlab="") # IF ORDERQ == T
+    points(dat.s.plot$ord_num, dat.s.plot$means, col="red", pch=16)                                  # IF ORDERQ == T
+
+  } else {
+    dat.s.plot <- shedder.summary.extract.data(
+      shedder.extracted.data = dat.plot,
+      response.variable      = response.variable,
+      orderQ                 = F)
+
+    boxplot(dat.plot$log.amount.DNA ~ dat.plot$subjectID, xaxt="n", main="", ylab="", xlab="")     # IF ORDERQ == F
+    points(1:nrow(dat.s.plot), dat.s.plot$means, col="red", pch=16)                            # IF ORDERQ == F
+  }
+
+  axis(1, at = 1:length(dat.s.plot$subjectID),  labels = dat.s.plot$subjectID,  las=2)
+
+}
 
 
 #' Fake financial fraud transaction data
@@ -301,3 +427,25 @@
 #' @examples
 #' data(nba)
 "nba"
+
+
+#' Gelman and Hill data on radon levels in houses in the state of Minnesota.
+#'
+#' Data taken directly from rstanarm
+#' 919 obs. of 4 variables
+#' log_radon Radon measurement from the house (log scale)
+#' log_uranium Uranium level in the county (log scale)
+#' floor Indicator for radon measurement made on the first floor of the house (0 = basement, 1 = first floor)
+#' county County name (factor)
+#'
+#' @docType data
+#'
+#' @usage data(radon)
+#'
+#' @keywords datasets
+#'
+#' @references Gelman and Hill, Cambridge University Press, 2006.
+#'
+#' @examples
+#' data(nba)
+"radon"

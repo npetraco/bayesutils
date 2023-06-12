@@ -4,7 +4,7 @@
 \alias{extract.params}
 \title{XXXXX}
 \usage{
-extract.params(
+\method{extract}{params}(
   fit.obj,
   params.vec = NULL,
   by.chainQ = F,
