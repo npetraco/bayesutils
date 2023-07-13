@@ -4,7 +4,7 @@
 \alias{extract.log.lik}
 \title{Function to extract log likelihoods form Stan or JAGS fit object}
 \usage{
-\method{extract}{log.lik}(fit.obj, parameter_name = "log_lik", merge_chains = F)
+extract.log.lik(fit.obj, parameter_name = "log_lik", merge_chains = F)
 }
 \arguments{
 \item{XX}{The XX}

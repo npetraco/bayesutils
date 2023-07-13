@@ -25,7 +25,7 @@ shd5 <- shedder.summary.extract.data(
 
 shedder.donor.boxplot(
   shedder.data       = shedder,
-  location.variable  = "N",
+  location.variable  = "LU",
   response.variable  = "log.amount.DNA",
-  response.statistic = sd,
+  response.statistic = mean,
   orderQ             = T)

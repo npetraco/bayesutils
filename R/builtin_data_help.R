@@ -218,7 +218,7 @@ shedder.extract.data <- function(shedder.data, location.variable, response.varia
 
   # Slice out location data
   ddat <- shedder.data %>% filter(location==location.variable)
-  ddat <- ddat %>% gather(rep.num, !!sym(response.variable), DNA.amt1:DNA.amt3)
+  ddat <- ddat %>% tidyr::gather(rep.num, !!sym(response.variable), DNA.amt1:DNA.amt3)
 
   # Responses stored as just DNA amounts. Transform response here if requested
   if(response.variable == "amount.DNA.cen"){
@@ -312,8 +312,8 @@ shedder.donor.boxplot <- function(shedder.data, location.variable, response.vari
       orderQ                 = T,
       order.statistic        = response.statistic)
 
-    boxplot(dat.plot$log.amount.DNA ~ factor(dat.plot$ord_num), xaxt="n", main="", ylab="", xlab="") # IF ORDERQ == T
-    points(dat.s.plot$ord_num, dat.s.plot$means, col="red", pch=16)                                  # IF ORDERQ == T
+    boxplot(dat.plot$log.amount.DNA ~ factor(dat.plot$ord_num), xaxt="n", main=paste0(response.variable, " Loc: ", location.variable), ylab=response.variable, xlab="subject ID")
+    points(dat.s.plot$ord_num, dat.s.plot$means, col="red", pch=16)
 
   } else {
     dat.s.plot <- shedder.summary.extract.data(
@@ -321,8 +321,8 @@ shedder.donor.boxplot <- function(shedder.data, location.variable, response.vari
       response.variable      = response.variable,
       orderQ                 = F)
 
-    boxplot(dat.plot$log.amount.DNA ~ dat.plot$subjectID, xaxt="n", main="", ylab="", xlab="")     # IF ORDERQ == F
-    points(1:nrow(dat.s.plot), dat.s.plot$means, col="red", pch=16)                            # IF ORDERQ == F
+    boxplot(dat.plot$log.amount.DNA ~ dat.plot$subjectID, xaxt="n", main=paste0(response.variable, " Loc: ", location.variable), ylab=response.variable, xlab="subject ID")
+    points(1:nrow(dat.s.plot), dat.s.plot$means, col="red", pch=16)
   }
 
   axis(1, at = 1:length(dat.s.plot$subjectID),  labels = dat.s.plot$subjectID,  las=2)
