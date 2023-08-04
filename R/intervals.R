@@ -50,39 +50,3 @@ parameter.intervals <- function(param.sample, prob=0.95, plotQ=F, main="Histogra
   return(interval.mat)
 
 }
-
-
-#' The function to bin and get frequencies for data
-#'
-#' Handy for use with discrete entropy and related functions
-#'
-#' @param dat.list The data. Send data in as a list in case data vectors are not the same length
-#' @param num.bin  How many bins to use
-#' @param countsQ  Return bin counts instead of frequencies
-#' @return The function will XX
-#'
-#'
-#' @export
-get.bin.freqs <- function(dat.list, num.bins, countsQ=F) {
-
-  all.dat.loc <- unlist(dat.list)
-  dbrks       <- seq(from=min(all.dat.loc), to=max(all.dat.loc), length.out=(num.bins+1))
-  #print(dbrks)
-
-  freq.mat <- NULL
-  for(i in 1:length(dat.list)) {
-
-    dcnts  <- table(cut(dat.list[[i]], breaks = dbrks, include.lowest = T ))
-    dfreqs <- dcnts/sum(dcnts)
-    #print(dfreqs)
-
-    if(countsQ == T) {
-      freq.mat <- rbind(freq.mat, dcnts)
-    } else {
-      freq.mat <- rbind(freq.mat, dfreqs)
-    }
-
-  }
-
-  return(freq.mat)
-}
