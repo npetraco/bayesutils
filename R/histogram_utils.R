@@ -134,10 +134,7 @@ approx.KL.divergence <- function(dat.list, bounds=NULL, num.points=1000, bw = "n
       print("---------------------------")
     }
 
-    #plot(xax, den1f(xax)*log(den1f(xax)/den2f(xax)), typ="l")
-    #plot(xax, den1y * log(den1y/den2y), "l")
-    #print(cbind(xax, den1y, den2y, den1y * log(den1y/den2y) ))
-
+    # Throw error if densities aren't normalized:
     if(all.equal(norm1, 1) == F) {
       stop("Density1 not normalized!")
     }
@@ -155,13 +152,26 @@ approx.KL.divergence <- function(dat.list, bounds=NULL, num.points=1000, bw = "n
 
   kl.kernf   <- splinefun(xax, den1f(xax)*log(den1f(xax)/den2f(xax), base = log.base) )
   kl.div.val <- integrate(kl.kernf, lower = min(xax), upper = max(xax), subdivisions=subdivisions)$value
-  print(kl.div.val)
 
+  if(plotQ == T){
+    print("**** Use Plot Window Arrows To Scroll Between All Four Plots ****")
 
-  print(flexmix::KLdiv(cbind(den1y, den2y), eps = .Machine$longdouble.eps))
-  print(entropy::KL.plugin(den1y, den2y))
+    plot(xax, den1f(xax), typ="l", main="Density1")
+    plot(xax, den2f(xax), typ="l", main="Density2")
+    plot(xax, kl.kernf(xax), typ="l", main="Kullback-Leibler Kernel")
 
+    plot(xax, kl.kernf(xax), typ="l", main="All", ylab="")
+    lines(xax, den1f(xax), col="blue")
+    lines(xax, den2f(xax), col="green")
 
-  #return(norm1)
+  }
+
+  kl.mat  <- cbind(xax, den1y, den2y, den1y * log(den1y/den2y) )
+  colnames(kl.mat) <- c("xax", "den1y", "den2y", "kl.kern")
+
+  kl.info <- list(kl.div.val, xax, den1f, den2f, kl.kernf, kl.mat)
+  names(kl.info) <- c("kl.div", "xax", "den1f", "den2f", "kl.kernf", "kl.mat")
+
+  return(kl.info)
 
 }
