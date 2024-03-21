@@ -2,7 +2,7 @@
 % Please edit documentation in R/histogram_utils.R
 \name{approx.KL.divergence}
 \alias{approx.KL.divergence}
-\title{The function to bin and get frequencies for data}
+\title{Function to roughly estimate Kullback-Leibler divergence between two distribution samples}
 \usage{
 approx.KL.divergence(
   dat.list,
@@ -45,5 +45,5 @@ approx.KL.divergence(
 The function will XX
 }
 \description{
-Handy for use with discrete entropy and related functions
+Function to roughly estimate Kullback-Leibler divergence between two distribution samples
 }

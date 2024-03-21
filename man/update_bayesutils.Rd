@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{update_bayesutils}
 \alias{update_bayesutils}
-\title{Standardize a data vector}
+\title{Easily update the bayesutils library by installing the current version from the github site}
 \usage{
 update_bayesutils()
 }
@@ -13,10 +13,5 @@ update_bayesutils()
 The function will XX
 }
 \description{
-Standardize with mean centering and sd scaling or median centering and MAD scaling
-}
-\details{
-Easily update the bayesutils library by installing the current version from the github site
-
 Easily update the bayesutils library by installing the current version from the github site
 }

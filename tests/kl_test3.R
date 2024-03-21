@@ -36,41 +36,10 @@ params.mat <- extract.params(fit, as.matrixQ = T)
 pri.mu.samp <- rst(10000, nu=3, mu=50, sigma=20)
 pri.mu.samp <- pri.mu.samp[-which(pri.mu.samp < 0)]
 hist(pri.mu.samp)
-range(pri.mu.samp)
-
-range(params.mat$mu)
-hist(params.mat$mu)
 
 
-# Need (constrained) range for prior and range for posterior sample
-# flexmix for KL
-approx.KL.divergence(list(pri.mu.samp, params.mat$mu))
-
-approx.KL.divergence(list(pri.mu.samp, params.mat$mu), num.points = 10000, renormalizeQ = T, printQ=T)
-approx.KL.divergence(list(pri.mu.samp, params.mat$mu), num.points = 10000, renormalizeQ = T, plotQ=T)
-
-junk <- approx.KL.divergence(list(pri.mu.samp, params.mat$mu), num.points = 100, renormalizeQ = T,
-                     printQ = F,
-                     bounds = c(0,300),
-                     tol    = 1e-21,
-                     eps    = .Machine$longdouble.neg.eps,
-                     #tol    = 1e-12,
-                     #eps    = 1e-6,
-                     subdivisions = 2000,
-                     plotQ = T)
+junk <- approx.KL.divergence(list(pri.mu.samp, params.mat$mu), num.points = 10000, renormalizeQ = T, plotQ=T)
 junk$kl.div
-
-approx.KL.divergence(list(pri.mu.samp, params.mat$mu), bounds = c(0,300), num.points = 10000)
-approx.KL.divergence(list(params.mat$mu, pri.mu.samp), bounds = c(0,300), num.points = 10000, subdivisions = 5000)
-
-approx.KL.divergence(list(pri.mu.samp, pri.mu.samp), num.points = 10000, renormalizeQ = T)
-approx.KL.divergence(list(params.mat$mu, params.mat$mu), bounds = c(0,300), num.points = 10000)
-
-#tol
-#eps
-#base
-#subdivisions
-#plot
 
 dfi <- approx.density.func(pri.mu.samp,
                            num.points = 1000,
@@ -85,8 +54,36 @@ dfi <- approx.density.func(pri.mu.samp,
 dfi$den.f(dfi$xax)
 
 
-library(entropy)
-fqs <- get.bin.freqs(list(pri.mu.samp, params.mat$mu), num.bins = 50)
-fqs
-KL.Dirichlet(fqs[1,], fqs[2,], a1=1, a2=1)
 
+library(entropy)
+library(flexmix)
+
+dpri <- approx.density.func(pri.mu.samp, bounds = c(0,300), plotQ=T, bre=40)
+dpst <- approx.density.func(params.mat$mu, bounds = c(0,300), plotQ=T)
+x <- seq(from=0, to=300, length.out=1000)
+
+KL.plugin(dpri$den.f(x), dpst$den.f(x))                          # entropy package
+
+kli <- KLD(dpri$den.f(x), dpst$den.f(x))                         # LaplacesDemon package
+kli$sum.KLD.px.py
+
+KLdiv(cbind(dpri$den.f(x), dpst$den.f(x)), eps = 1e-19)          # flexmix package
+
+
+KLD
+px <- dpri$den.f(x)
+py <- dpst$den.f(x)
+px <- px/sum(px)
+py <- py/sum(py)
+sum(px * (log(px) - log(py)))
+plot(px)
+plot(py)
+
+
+
+fqs <- get.bin.freqs(list(pri.mu.samp, params.mat$mu), num.bins = 40, countsQ=T)
+KL.empirical(fqs[1,], fqs[2,])
+
+KL.Dirichlet(fqs.cnts[1,], fqs.cnts[2,], a1=1, a2=1 )
+
+discretize(pri.mu.samp, numBins=40)
